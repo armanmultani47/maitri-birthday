@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Maituuu.exe 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:'Courier New', monospace;
+    background: linear-gradient(-45deg, #ff4d88, #ff85b3, #ffb6d9, #ffd6ea);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    color:#0a1a44;
+    text-align:center;
+    overflow:auto;
+}
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.container{padding:25px}
+
+.card{
+    border:1px solid rgba(10,26,68,0.3);
+    border-radius:20px;
+    padding:25px;
+    margin:25px auto;
+    max-width:1100px;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    box-shadow:0 0 30px rgba(255,47,146,0.4);
+}
+
+.hidden{display:none}
+
+#terminal{
+    text-align:left;
+    white-space:pre-line;
+}
+
+/* PHOTOS */
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:30px;
+}
+.photo-grid img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:18px;
+    box-shadow:0 0 15px rgba(255,47,146,0.4);
+}
+@media(max-width:768px){
+    .photo-grid{grid-template-columns:1fr 1fr}
+}
+
+/* BUTTON */
+button{
+    background:linear-gradient(135deg,#ff2f92,#ff6fcf);
+    border:none;
+    color:white;
+    padding:12px 30px;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    margin:8px;
+    box-shadow:0 0 18px rgba(255,47,146,0.7);
+}
+button:hover{transform:scale(1.08)}
+
+/* HEARTBEAT */
+.pulse{
+    animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.08)}
+    100%{transform:scale(1)}
+}
+
+/* FLOATING HEARTS */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    animation:float 6s linear infinite;
+    font-size:24px;
+}
+@keyframes float{
+    from{transform:translateY(0);opacity:1}
+    to{transform:translateY(-100vh);opacity:0}
+}
+
+/* 🎁 GIFT BOX */
+.gift{
+    font-size:80px;
+    cursor:pointer;
+    animation:giftBounce 1.5s infinite;
+}
+@keyframes giftBounce{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+    100%{transform:scale(1)}
+}
+
+.love-message{
+    font-size:18px;
+    margin-top:20px;
+    color:#ff2f92;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 BACKGROUND SONG -->
+<audio autoplay loop>
+    <source src="Perfect-(Mr-Jat.in).mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<h1>Swetaaaaaaa💖😘</h1>
+
+<div class="card" id="terminal"></div>
+
+<div class="card hidden" id="passwordCard">
+<p>🔐 SECURITY CHECK</p>
+<p>Enter Name I Call You Most 👀</p>
+<input id="pass" placeholder="Type here..."
+style="padding:8px;border-radius:8px;border:1px solid #0a1a44">
+<br><br>
+<button onclick="checkPass()">UNLOCK 🔓</button>
+</div>
+
+<div class="card hidden" id="countdownCard">
+<h2>⏳ Surprise Unlocking In</h2>
+<h1 id="count">5</h1>
+</div>
+
+<div class="card hidden" id="finalCard">
+<h1>🎂 HAPPY BIRTHDAY MAITUUU 💖</h1>
+
+<div class="photo-grid">
+    <img src="img1.jpeg">
+    <img src="img2.jpeg">
+    <img src="img3.jpeg">
+    <img src="img4.jpeg">
+</div>
+
+<p class="pulse">
+Tu mara life ni <b>best invention</b> chhe ❤️<br><br>
+Without you:<br>
+❌ Happiness = null<br>
+❌ Smile = undefined<br><br>
+
+while(life == running){<br>
+&nbsp;&nbsp;love++;<br>
+&nbsp;&nbsp;future = you;<br>
+}
+<br><br>
+<b>You are permanently installed in my heart 🔐💖</b>
+</p>
+
+<!-- 🎁 SURPRISE GIFT -->
+<h2>🎁 One More Surprise For You</h2>
+<div class="gift" onclick="openGift()">🎁</div>
+
+<div id="giftMsg" class="love-message hidden">
+💖 Sweta, you are my today, my tomorrow and my forever.  
+No gift in this world is bigger than my love for you 😘❤️  
+I promise to stand with you in every version of life 💍✨
+</div>
+
+<h3>— Your Personal Programmer 👨‍💻</h3>
+</div>
+</div>
+
+<script>
+/* TERMINAL */
+const lines=[
+"Booting system...",
+"Loading emotions...",
+"Checking heart compatibility...",
+"⚠ Warning: Girlfriend too cute 😳",
+"Overclocking love levels...",
+"Authentication required 🔐"
+];
+let i=0;
+function terminalType(){
+    if(i<lines.length){
+        terminal.innerHTML+=lines[i]+"<br>";
+        i++;
+        setTimeout(terminalType,1200);
+    }else{
+        passwordCard.classList.remove("hidden");
+    }
+}
+terminalType();
+
+/* PASSWORD */
+function checkPass(){
+    let p=pass.value.toLowerCase();
+    if(p.includes("maitu")){
+        passwordCard.classList.add("hidden");
+        startCountdown();
+    }else{
+        alert("❌ Wrong name 😈 Try again");
+    }
+}
+
+/* COUNTDOWN */
+function startCountdown(){
+    countdownCard.classList.remove("hidden");
+    let c=5;
+    let t=setInterval(()=>{
+        count.innerText=c;
+        c--;
+        if(c<0){
+            clearInterval(t);
+            countdownCard.classList.add("hidden");
+            finalCard.classList.remove("hidden");
+        }
+    },1000);
+}
+
+/* 🎁 GIFT OPEN */
+function openGift(){
+    document.querySelector(".gift").innerHTML="💝";
+    document.getElementById("giftMsg").classList.remove("hidden");
+}
+
+/* HEARTS */
+function heart(){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,300);
+</script>
+
+</body>
+</html>
